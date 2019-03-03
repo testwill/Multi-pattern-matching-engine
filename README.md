@@ -9,3 +9,13 @@ OVERVIEW
 
 It is  a high-performance  dynamic library for string match.
 You can test it with bm_test for single pattern search  and mpse_test for multi pattern search.
+
+
+To Build
+---------------------
+
+```bash
+./autogen.sh
+./configure
+make
+make install # optional
