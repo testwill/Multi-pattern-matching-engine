@@ -3,7 +3,7 @@
 
 #include "mpse/mpse.h"
 #include "mpse/str_search.h"
-
+#include "mpse/util.h"
 
 typedef struct _SearchToken               
 {   
@@ -96,7 +96,7 @@ int main( int argc, char ** argv )
 
     TestSearchInit();
 
-    int source_len = strlen(argv[1]);
+    size_t source_len = strlen(argv[1]);
 
     int script_found;
     current_search = &search[0];

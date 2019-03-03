@@ -44,6 +44,7 @@
 #include <strings.h>
 #endif
 #include <string.h>
+#include <ctype.h>
 
 #include "sf_types.h"
 #include "sflsq.h"

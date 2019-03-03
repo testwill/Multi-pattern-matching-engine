@@ -9,12 +9,12 @@ lib_LTLIBRARIES =
 
 bin_PROGRAMS =
 
+dist_doc_DATA =
 
 if HAVE_INTEL_SOFT_CPM
 INTEL_SOFT_CPM_SOURCES = src/sfutil/intel-soft-cpm.c src/sfutil/intel-soft-cpm.h
 endif
 
-libmpse_la_CXXFLAGS =
 MPSE_INCLUDES = src/mpse/str_search.h \
     src/mpse/boyer_moore.h \
     src/mpse/mpse.h \
@@ -28,7 +28,7 @@ MPSE_INCLUDES = src/mpse/str_search.h \
     src/mpse/bnfa_search.h \
     src/mpse/acsmx.h
 
-libmpse_la_CXXFLAGS = 
+libmpse_la_CXXFLAGS =
 
 lib_LTLIBRARIES += libmpse.la
 libmpse_la_SOURCES = src/mpse/acsmx2.c \
@@ -61,7 +61,6 @@ libmpse_la_SOURCES = src/mpse/acsmx2.c \
     src/mpse/snort.h \
     $(INTEL_SOFT_CPM_SOURCES)
 
-libtmpse_la_LIBADD = libmpse.la
 libmpse_la_LDFLAGS = -version-info @MPSE_SO_VERSION@ $(AM_LDFLAGS)
 
 bin_PROGRAMS += bm_test
