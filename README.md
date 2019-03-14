@@ -14,7 +14,6 @@ You can test it with bm_test for single pattern search  and mpse_test for multi 
 To Build
 ---------------------
 
-```bash
 ./autogen.sh
 ./configure
 make
