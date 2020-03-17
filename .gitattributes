@@ -1,0 +1,3 @@
+*.am linguist-language=c
+*.in linguist-language=c
+configure.ac linguist-language=c
