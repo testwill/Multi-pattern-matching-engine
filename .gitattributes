@@ -1,5 +1,5 @@
 *.am linguist-language=c
 *.in linguist-language=c
 configure.ac linguist-language=c
-*.c=c
-*.h=c
+*.c linguist-language=c
+*.h linguist-language=c
