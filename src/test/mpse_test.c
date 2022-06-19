@@ -82,7 +82,7 @@ int TestSearchStrFound(void *id, void *unused, int index, void *data, void *unus
     search_info.index = index;
     search_info.length = current_search[search_id].name_len;
 
-     printf("id :%d\n", search_id);
+     printf("id :%d, index :%d\n", search_id, index);
     /* Returning non-zero stops search, which is okay since we only look for one at a time */
     return 1;
 }

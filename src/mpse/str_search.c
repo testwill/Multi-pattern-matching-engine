@@ -56,7 +56,7 @@ int SearchInit(unsigned int num)
 
     for ( i = 0; i < num; i++ )
     {
-        _mpse[i].mpse = mpseNew(MPSE_AC_BNFA, MPSE_DONT_INCREMENT_GLOBAL_COUNT,
+        _mpse[i].mpse = mpseNew(MPSE_HPERSCAN, MPSE_DONT_INCREMENT_GLOBAL_COUNT,
                                 NULL, NULL, NULL);
         if ( !_mpse[i].mpse )
             return -1;
@@ -71,7 +71,7 @@ int SearchReInit(unsigned int i)
     if ( _mpse[i].mpse != NULL )
         mpseFree(_mpse[i].mpse);
 
-    _mpse[i].mpse = mpseNew(MPSE_AC_BNFA, MPSE_DONT_INCREMENT_GLOBAL_COUNT,
+    _mpse[i].mpse = mpseNew(MPSE_HPERSCAN, MPSE_DONT_INCREMENT_GLOBAL_COUNT,
                             NULL, NULL, NULL);
     _mpse[i].max_len = 0;
     _mpse[i].in_use=1;
@@ -199,7 +199,7 @@ void *  SearchInstanceNew(void)
     if( !search )
         return NULL;
 
-    search->mpse  = mpseNew(MPSE_AC_BNFA, MPSE_DONT_INCREMENT_GLOBAL_COUNT,
+    search->mpse  = mpseNew(MPSE_HPERSCAN, MPSE_DONT_INCREMENT_GLOBAL_COUNT,
                             NULL, NULL, NULL);
     if (search-> mpse == NULL )
     {

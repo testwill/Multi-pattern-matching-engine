@@ -41,6 +41,8 @@
 #include "snort_debug.h"
 #include "sf_types.h"
 #include "util.h"
+#include "hyperscan.h"
+
 
 #ifdef INTEL_SOFT_CPM
 #include "intel-soft-cpm.h"
@@ -120,6 +122,9 @@ void * mpseNew( int method, int use_global_counter_flag,
             break;
         case MPSE_LOWMEM_Q:
             p->obj = KTrieNew(1,userfree, optiontreefree, neg_list_free);
+			break;
+		case MPSE_HPERSCAN:
+			p->obj = hssmNew(userfree, optiontreefree, neg_list_free);
             break;
         default:
             /* p is free'd below if no case */
@@ -198,6 +203,10 @@ void * mpseNewWithSnortConfig( struct _SnortConfig *sc,
             p->obj=IntelPmNew(sc, userfree, optiontreefree, neg_list_free);
             break;
 #endif
+        case MPSE_HPERSCAN:
+            p->obj = hssmNew(userfree, optiontreefree, neg_list_free);
+            break;
+
         default:
             /* p is free'd below if no case */
             break;
@@ -287,6 +296,11 @@ void   mpseFree( void * pvoid )
             free(p);
             break;
 #endif
+		case MPSE_HPERSCAN:
+			if (p->obj)
+				hssmFree((HSSM_STRUCT *)p->obj);
+			free(p);
+			return;
 
         default:
             return;
@@ -322,6 +336,9 @@ int  mpseAddPattern ( void * pvoid, void * P, int m,
      case MPSE_LOWMEM_Q:
        return KTrieAddPattern( (KTRIE_STRUCT *)p->obj, (unsigned char *)P, m,
                                 noCase, negative, ID );
+	 case MPSE_HPERSCAN:
+	   return hssmAddPattern( (HSSM_STRUCT*)p->obj, (unsigned char *)P, m,
+              noCase, offset, depth, negative, ID, IID );
      default:
        return -1;
    }
@@ -361,6 +378,9 @@ int  mpseAddPatternWithSnortConfig ( SnortConfig *sc, void * pvoid, void * P, in
        return IntelPmAddPattern(sc, (IntelPm *)p->obj, (unsigned char *)P, m,
                noCase, negative, ID, IID);
 #endif
+	case MPSE_HPERSCAN:
+		return hssmAddPattern( (HSSM_STRUCT*)p->obj, (unsigned char *)P, m,
+			   noCase, offset, depth, negative, ID, IID );
      default:
        return -1;
    }
@@ -407,6 +427,8 @@ int  mpsePrepPatterns  ( void * pvoid,
      case MPSE_LOWMEM_Q:
        return KTrieCompile( (KTRIE_STRUCT *)p->obj, build_tree, neg_list_func );
 
+	case MPSE_HPERSCAN:
+		return hssmCompile( (HSSM_STRUCT*) p->obj, build_tree, neg_list_func);
      default:
        retv = 1;
      break;
@@ -638,6 +660,11 @@ int mpseSearch( void *pvoid, const unsigned char * T, int n,
         PREPROC_PROFILE_END(mpsePerfStats);
         return ret;
 #endif
+	case MPSE_HPERSCAN:
+		ret = hssmSearch( (HSSM_STRUCT *)p->obj, (unsigned char *)T, n, action, data);
+        *current_state = 0;
+        PREPROC_PROFILE_END(mpsePerfStats);
+        return ret;
 
      default:
        PREPROC_PROFILE_END(mpsePerfStats);

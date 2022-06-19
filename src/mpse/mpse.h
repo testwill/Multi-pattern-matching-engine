@@ -67,6 +67,8 @@
 #define MPSE_AC_BNFA_Q 11
 #define MPSE_ACF_Q     12
 #define MPSE_LOWMEM_Q  13
+#define MPSE_HPERSCAN  14
+
 
 #ifdef INTEL_SOFT_CPM
 #define MPSE_INTEL_CPM 14

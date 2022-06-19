@@ -26,7 +26,8 @@ MPSE_INCLUDES = src/mpse/str_search.h \
     src/mpse/sfksearch.h \
     src/mpse/sfrt_trie.h \
     src/mpse/bnfa_search.h \
-    src/mpse/acsmx.h
+    src/mpse/acsmx.h \
+    src/mpse/hyperscan.h
 
 libmpse_la_CXXFLAGS =
 
@@ -59,9 +60,11 @@ libmpse_la_SOURCES = src/mpse/acsmx2.c \
     src/mpse/util.h \
     src/mpse/snort.c \
     src/mpse/snort.h \
+    src/mpse/hyperscan.c \
     $(INTEL_SOFT_CPM_SOURCES)
 
 libmpse_la_LDFLAGS = -version-info @MPSE_SO_VERSION@ $(AM_LDFLAGS)
+libmpse_la_LIBADD = -lhs
 
 bin_PROGRAMS += bm_test
 bm_test_SOURCES = src/test/bm_test.c $(MPSE_INCLUDES)
@@ -85,4 +88,5 @@ mpseinclude_HEADERS =  src/mpse/str_search.h \
     src/mpse/sfrt_trie.h \
     src/mpse/bnfa_search.h \
     src/mpse/acsmx.h \
-    src/mpse/bitop.h
+    src/mpse/bitop.h \
+    src/mpse/hyperscan.h
