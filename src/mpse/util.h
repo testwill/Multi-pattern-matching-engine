@@ -305,14 +305,6 @@ static inline int IsEmptyStr(const char *str)
     return 0;
 }
 
-static inline pid_t gettid(void)
-{
-#if defined(LINUX) && defined(SYS_gettid)
-    return syscall(SYS_gettid);
-#else
-    return getpid();
-#endif
-}
 
 static inline void UpdateDoePtr(const uint8_t *ptr, uint8_t update)
 {
