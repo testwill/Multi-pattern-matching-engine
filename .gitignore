@@ -24,3 +24,9 @@ mpse_test
 src/config.h
 src/sfutil/
 src/stamp-h1
+Makefile.in
+aclocal.m4
+compile
+config.guess
+config.sub
+configure
