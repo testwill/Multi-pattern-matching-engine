@@ -43,7 +43,7 @@
 #include "bitop.h"
 
 /*
-*   Move these defines to a generic Win32/Unix compatability file,
+*   Move these defines to a generic Win32/Unix compatibility file,
 *   there must be one somewhere...
 */
 #ifndef CDECL

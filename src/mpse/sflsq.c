@@ -30,7 +30,7 @@
 *   11/05/2005 - man - Added sflist_firstx() and sflist_nextx() with user
 *   provided SF_NODE inputs for tracking the list position.  This allows
 *   multiple readers to traverse a list. The built in 'cur' field does not
-*   wrok for multiple readers.
+*   work for multiple readers.
 *
 *
 */
