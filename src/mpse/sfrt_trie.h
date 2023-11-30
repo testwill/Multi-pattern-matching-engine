@@ -47,7 +47,7 @@
    The trie is represented by an array and each node consists of an
    unsigned word. The first 5 bits (31-27) indicate the logarithm
    of the branching factor. The next 5 bits (26-22) indicate the
-   skip value. The final 22 (21-0) bits is an adress, either to
+   skip value. The final 22 (21-0) bits is an address, either to
    another internal node, or the base vector.
    The maximum capacity is 2^21 strings (or a few more). The trie
    is prefixfree. All strings that are prefixes of another string

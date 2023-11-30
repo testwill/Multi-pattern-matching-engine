@@ -83,7 +83,7 @@
 ** instruction pipelining.  Aren't we all.  To this end, the number of
 ** patterns, length of search text, and cpu cache L1,L2,L3 all affect
 ** performance. The relative performance of the sparse and full format NFA and
-** DFA varies as you vary the pattern charactersitics,and search text length,
+** DFA varies as you vary the pattern characteristics,and search text length,
 ** but strong performance trends are present and stable.
 **
 **
@@ -819,7 +819,7 @@ int KcontainsJ(bnfa_trans_node_t * tk, bnfa_trans_node_t *tj )
     bnfa_state_t       full[BNFA_MAX_ALPHABET_SIZE];
 
     if( !_bnfa_conv_node_to_full(tk,full)  )
-        return 1; /* emtpy state */
+        return 1; /* empty state */
 
     while( tj )
     {
@@ -2528,7 +2528,7 @@ _bnfa_search_csparse_nfa_nocase(   bnfa_struct_t * bnfa, unsigned char *Tx, int 
 *  sindex - state tracker, set value to zero to reset the state machine,
 *            zero should be the value passed in on the 1st buffer or each buffer
 *           that is to be analyzed on its own, the state machine updates this
-*            during searches. This allows for sequential buffer searchs without
+*            during searches. This allows for sequential buffer searches without
 *            reseting the state machine. Save this value as returned from the
 *            previous search for the next search.
 *

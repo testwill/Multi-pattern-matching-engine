@@ -194,7 +194,7 @@ void bnfaPrint(	bnfa_struct_t * pstruct); /* prints the nfa states-verbose!! */
 void bnfaPrintInfo( bnfa_struct_t  * pstruct); /* print info on this search engine */
 
 /*
- * Summary - this tracks search engine information accross multiple instances of
+ * Summary - this tracks search engine information across multiple instances of
  * search engines.  It helps in snort where we have many search engines, each using
  * rule grouping, to track total patterns, states, memory, etc...
  *

@@ -707,7 +707,7 @@ int SnortSnprintfAppend(char *buf, size_t buf_size, const char *format, ...)
 
     if (buf[buf_size - 1] != '\0' || (size_t)ret >= buf_size)
     {
-        /* truncation occured */
+        /* truncation occurred */
         buf[buf_size - 1] = '\0';
         return SNORT_SNPRINTF_TRUNCATION;
     }

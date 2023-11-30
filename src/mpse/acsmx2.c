@@ -3003,7 +3003,7 @@ int acsmPrintDetailInfo2( ACSM_STRUCT2 * p )
 }
 
 /*
- *   Global sumary of all info and all state machines built during this run
+ *   Global summary of all info and all state machines built during this run
  *   This feeds off of the last pattern groupd built within snort,
  *   all groups use the same format, state size, etc..
  *   Combined with accrued stats, we get an average picture of things.
